@@ -1,5 +1,5 @@
 const { User } = require("../models/userModel.js")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
 
 const SECRET = 'misecreto'
@@ -58,7 +58,22 @@ nombre:nombre
 
 const Desactivacion = async(req, res) =>{
 
+    const id = req.user.id
+const consulta = await User.update({
+isDeleted: true
+},
+{
+where : {
+id : id
+}
 
+})
+if(consulta){
+return res.status(200).json({message: "usuario desactivado"})
+}
+else {
+return res.status(500).json({message: "error del servidor"})
+}
     
 }
 

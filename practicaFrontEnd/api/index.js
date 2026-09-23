@@ -10,7 +10,7 @@ servidor.use("/users", Router)
 
 servidor.listen(3000, async()=>{
 
-    sequelize.sync({froce: true})
+    sequelize.sync({force: true})
 
     console.log("el servidor corre en el puerto 3000");
 })
