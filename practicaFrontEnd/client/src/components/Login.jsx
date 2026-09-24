@@ -3,20 +3,30 @@ import { useEffect } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
-function Login(){
+function Login({setIsLogged}){
 const [nombre, setNombre] = useState("")
 const [contraseña, setContraseña] =useState("")
+const navigate = useNavigate()
+
 const loguear = async() =>{
+
+    try{
 const respuesta = await axios.post('http://localhost:3000/users/login',{
     nombre, contraseña
 })
+console.log(respuesta)
 if(respuesta.data.token){
 
 alert("login exitoso")
 localStorage.setItem('token', respuesta.data.token)
+setIsLogged(true);
 }
-else{
-    alert("credenciales incorrectas")
+
+navigate("/")
+
+    }
+catch(error){
+    alert(error.response.data.message)
 }
 
 }

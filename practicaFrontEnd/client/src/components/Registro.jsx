@@ -7,7 +7,7 @@ function Registro() {
     const [sexo, setSexo] = useState("")
 
     const registrarUsuario = async () => {
-
+try{
         const respuesta = await axios.post("http://localhost:3000/users/registro", {
 
             nombre, contraseña, sexo
@@ -18,6 +18,10 @@ function Registro() {
             setContraseña("")
             setSexo("")
         }
+    }catch(error){
+    alert(error.response.data.message)
+
+    }
     }
     return (
         <>

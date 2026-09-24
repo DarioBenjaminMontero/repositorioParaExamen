@@ -1,3 +1,4 @@
+const { defaultValueSchemable } = require("sequelize/lib/utils");
 const { sequelize } = require("../config/db.js")
 const { DataTypes } = require("sequelize");
 
@@ -31,6 +32,20 @@ isDeleted: {
 type: DataTypes.BOOLEAN,
 allowNull : false,
 defaultValue : false
+},
+monthlyApiQuota : {
+    type : DataTypes.INTEGER,
+    defaultValue : 10
+},
+apiUsageCount: {
+    type : DataTypes.INTEGER,
+    defaultValue: 0
+},
+resetPasswordToken: {
+type : DataTypes.STRING
+},
+resetPasswordExpire:{
+type: DataTypes.DATE
 }
 
 }, {
