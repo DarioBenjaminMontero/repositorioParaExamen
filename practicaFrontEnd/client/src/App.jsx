@@ -5,6 +5,10 @@ import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import Registro from './components/Registro.jsx'
 import Login from './components/Login.jsx'
 import axios from 'axios'
+import RecibirRecuperacion from './components/recibirRecuperacion.jsx';
+import Recuperar from './components/Recuperar.jsx';
+import Productos  from './components/productos.jsx';
+import Imagenes from './components/oredenarimg.jsx';
 function App() {
   const utilizarServicio = async()=>{
 try{
@@ -72,7 +76,18 @@ alert(respuesta.data.message)
       registro
       </Link>
       </button> 
+      <button>
+      <Link to= "/recibirCodigo">
+      olvidaste tu contraseña? recibe un codigo de recuperacion
+      </Link>
+      </button> 
+      <button>
+      <Link to= "/recuperar">
+      recuperar con token
+      </Link>
+      </button> 
       </>
+
  )}
      
       {isLogged && (
@@ -80,12 +95,26 @@ alert(respuesta.data.message)
           <button onClick={logout}>logout</button>
           <button onClick={isDeletedTrue}>desactivar cuenta</button>
           <button onClick = {utilizarServicio}> utilizar servicio </button>
+          <button>
+      <Link to= "/productos">
+      prouctos
+      </Link>
+      </button> 
+           <button>
+      <Link to= "/oredenarimg">
+      ver imagenes
+      </Link>
+      </button>
         </>
       )}
 
 <Routes>
 <Route element = {<Login setIsLogged={setIsLogged}></Login>} path = "/login" />
 <Route element = {<Registro></Registro>} path = "/registro" />
+<Route element = {<RecibirRecuperacion></RecibirRecuperacion>} path = "/recibirCodigo" />
+<Route element = {<Recuperar></Recuperar>} path = "/recuperar" />
+<Route element = {<Productos></Productos>} path = "/productos" />
+<Route element = {<Imagenes></Imagenes>} path = "/oredenarimg" />
 
 </Routes>
 

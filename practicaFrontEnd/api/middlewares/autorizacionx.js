@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken")
 const { User } = require("../models/userModel.js")
 const SECRET = 'misecreto'
-const autorizacion = async (req, res, next) => {
+const autorizacionx = async (req, res, next) => {
 
     const token = req.headers['authorization'].split(" ")[1] || req.headers['authorization']
 
@@ -20,10 +20,10 @@ const autorizacion = async (req, res, next) => {
 
             }
             req.user = {
-                
                 id: user.id,
-                nombre: user.nombre
-
+                nombre: user.nombre,
+                textp: req.textp,
+                index: req.orden
             }
             next()
         })
@@ -38,4 +38,4 @@ const autorizacion = async (req, res, next) => {
 
 }
 
-module.exports = { autorizacion }
+module.exports = { autorizacionx }

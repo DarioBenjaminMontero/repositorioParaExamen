@@ -46,6 +46,14 @@ type : DataTypes.STRING
 },
 resetPasswordExpire:{
 type: DataTypes.DATE
+},
+ratedProductsId : {
+type : DataTypes.JSON,
+defaultValue: []
+},
+galleryOrder:{
+    type:DataTypes.JSON,
+    defaultValue:[]
 }
 
 }, {
